@@ -21,7 +21,7 @@ $(document).ready(function () {
             yAxisID: "y-axis-1",
             borderColor: "#f6c63e"
         }
-    ]
+        ]
     }
 
 
@@ -62,5 +62,28 @@ $(document).ready(function () {
                 }],
             }
         }
+    });
+
+    const columnDefs = [
+        {headerName: 'Make', field: 'make'},
+        {headerName: 'Model', field: 'model'},
+        {headerName: 'Price', field: 'price'}
+    ];
+
+    const gridOptions = {
+        columnDefs: columnDefs,
+        enableSorting: true,
+        enableFilter: true
+    };
+
+    const eGridDiv = document.querySelector('#myGrid');
+
+    new agGrid.Grid(eGridDiv, gridOptions);
+
+    fetch('https://api.myjson.com/bins/15psn9').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        gridOptions.api.setRowData(data);
     })
 })
+
