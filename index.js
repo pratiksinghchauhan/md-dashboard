@@ -14,12 +14,14 @@ $(document).ready(function () {
             data: [50, 85, 56, 50, 60, 70, 80],
             yAxisID: "y-axis-1",
             borderColor: "#0ad4e6"
-        }, {
+        },
+        {
             label: "My Second dataset",
             data: [35, 45, 75, 40, 55, 73, 82],
-            yAxisID: "y-axis-2",
+            yAxisID: "y-axis-1",
             borderColor: "#f6c63e"
-        }]
+        }
+    ]
     }
 
 
@@ -57,19 +59,6 @@ $(document).ready(function () {
                         display: true,
                         labelString: "Cost"
                     }
-                }, {
-                    type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: "right",
-                    id: "y-axis-2",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Students",
-                    },
-                    // grid line settings
-                    gridLines: {
-                        drawOnChartArea: false, // only want the grid lines for one axis to show up
-                    },
                 }],
             }
         }
