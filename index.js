@@ -67,23 +67,34 @@ $(document).ready(function () {
     const columnDefs = [
         {headerName: 'Make', field: 'make'},
         {headerName: 'Model', field: 'model'},
-        {headerName: 'Price', field: 'price'}
+        {headerName: 'Price', field: 'price'},
+        {headerName: 'Year', field: 'year'},
+        {headerName: 'Color', field: 'color'},
     ];
 
     const gridOptions = {
+        resizable: true,
         columnDefs: columnDefs,
         enableSorting: true,
-        enableFilter: true
+        enableFilter: true,
+        
     };
 
     const eGridDiv = document.querySelector('#myGrid');
 
     new agGrid.Grid(eGridDiv, gridOptions);
+    let data = [
+        { "make": "Toyota", "model": "Celica", "price": 35000 , "year" : "2019", "color" :  "Red"},
+        { "make": "Ford", "model": "Mondeo", "price": 32000 , "year" : "2009", "color" :  "Yellow"},
+        { "make": "Porsche", "model": "Boxter", "price": 72000 , "year" : "2010", "color" :  "Green"}
+    ];
+    gridOptions. api.sizeColumnsToFit()
+    gridOptions.api.setRowData(data);
 
-    fetch('https://api.myjson.com/bins/15psn9').then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        gridOptions.api.setRowData(data);
-    })
+    // fetch('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/sample-data/smallRowData.json').then(function (response) {
+    //     return response.json();
+    // }).then(function (data) {
+    //     gridOptions.api.setRowData(data);
+    // })
 })
 
